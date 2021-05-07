@@ -2,6 +2,7 @@
    KallistiGL 2.0.0
 
    quadmark.c
+   (c) Ian micheal SDL+GLDC opengl
    (c)2018 Luke Benstead
    (c)2014 Josh Pearson
    (c)2002 Dan Potter, Paul Boese
