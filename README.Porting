@@ -9,6 +9,8 @@ Simple DirectMedia Layer is a cross-platform multimedia library designed to prov
 	Full KallistiOS and SDL integration.
 	Texture color and size conversions.
 	Two texture internal color mode supported: RGB5551 and RGB4444.
+	
+	- Ported precompiled libraries and headers needed to compile all examples
 
 -----------------------------------------------------------------------------------
 Credit Chui for doing all this work so i could upgrade it and improve it for the new GLDC and Dreamhal math routines and functions 
