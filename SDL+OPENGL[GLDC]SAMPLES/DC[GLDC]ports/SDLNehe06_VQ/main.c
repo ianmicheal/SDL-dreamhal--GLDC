@@ -1,4 +1,4 @@
-/*  DREAMCAST GLDC example port Zclip ?kazade
+/*  DREAMCAST GLDC example port kazade
  *IAN MICHEAL Ported SDL+OPENGL USING SDL[DREAMHAL][GLDC][KOS2.0]2021
  * Cleaned and tested on dreamcast hardware by Ianmicheal
  *		This Code Was Created By Pet & Commented/Cleaned Up By Jeff Molofee
