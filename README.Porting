@@ -1,5 +1,28 @@
 # SDL-DREAMHAL Version 1.0 based on SDL1.2.13
 * DREAMCAST hardware +opengl SDL FAST BLIT SPEED CUSTOM
+2D blit speed benchmark
+```SDL CHUI
+
+OUTPUT:>                           320x240  320x240    640x480                 640x480
+OUTPUT:>                           software hardware software                   hardware
+OUTPUT:> Slow points (frames/sec):  0.20885 0.208823 0.0250253 0.0250252 
+OUTPUT:> Fast points (frames/sec):  18.4372  18.4544  4.47263  4.47271 
+OUTPUT:>    Rect fill (rects/sec):  652.125  652.333  156.312    156.3 
+OUTPUT:>  32x32 blits (blits/sec):  1327.28  1327.28  1277.21   1277.6 
+OUTPUT:> arch: shutting down kernel
+OUTPUT:> maple: final stats -- device count = 2, vbl_cntr = 56270, dma_cntr = 56266
+OUTPUT:> vid_set_mode: 640x480 NTSC```
+STATE:> Upload processus completed on 6/17/2021 - 09:31:53, Exit Code : 0
+```SDL DREAMHAL IAN MICHEAL
+OUTPUT:>                           320x240  320x240  640x480  640x480
+OUTPUT:>                           software hardware software hardware
+OUTPUT:> Slow points (frames/sec): 0.419221 0.419331 0.0502137 0.0502235 
+OUTPUT:> Fast points (frames/sec):  36.9728  36.9942  8.97175  8.97364 
+OUTPUT:>    Rect fill (rects/sec):  1324.71  1329.87  314.932  314.786 
+OUTPUT:>  32x32 blits (blits/sec):  3126.72  3129.11   2957.4  2970.27 
+OUTPUT:> arch: shutting down kernel
+OUTPUT:> maple: final stats -- device count = 2, vbl_cntr = 27991, dma_cntr = 27976
+OUTPUT:> vid_set_mode: 640x480 VGA```
 Simple DirectMedia Layer is a cross-platform multimedia library designed to provide low level access to audio, keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer. 
 *New features
  UPGRADED blitspeed using moops dreamhal sh4 asm memcpy and memset bult in.
