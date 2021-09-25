@@ -116,7 +116,7 @@ typedef unsigned long long uint64_t;
 #define SDL_VIDEO_DRIVER_DC	1
 #define SDL_VIDEO_DRIVER_DUMMY	1
 
-/*
+
 #include "memfuncs.h"
 
 #define SDL_memset memset_
@@ -125,6 +125,6 @@ typedef unsigned long long uint64_t;
 #define SDL_memcpy4 memcpy_32bit
 #define SDL_memmove memove_
 #define SDL_memcmp memcmp_
-*/
+
 
 #endif /* _SDL_config_dreamcast_h */
