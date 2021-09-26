@@ -12,8 +12,8 @@
 #include "GL/gl.h"
 #include "GL/glu.h"
 #include "GL/glkos.h"
-#include "SDL.h"
-#include <SDL_dreamcast.h>
+#include "SDLDH/SDL.h"
+#include "SDLDH/SDL_dreamcast.h"
 /* screen width, height, and bit depth */
 #define SCREEN_WIDTH  640
 #define SCREEN_HEIGHT 480
