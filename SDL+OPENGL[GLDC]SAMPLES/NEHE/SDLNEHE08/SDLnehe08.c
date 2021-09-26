@@ -11,9 +11,9 @@
 #include "GL/gl.h"
 #include "GL/glu.h"
 #include "GL/glkos.h"
-#include "SDL.h"
+#include "SDLDH/SDL.h"
+#include "SDLDH/SDL_dreamcast.h"
 #include <kos.h>
-#include <SDL_dreamcast.h>
 #define FPS 60
 Uint32 waittime = 1000.0f/FPS;
 Uint32 framestarttime = 0;
