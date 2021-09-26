@@ -1,7 +1,9 @@
 # SDL-DREAMHAL Version 1.0 based on SDL1.2.13
+GLDC rendering with SDL on dreamcast 
+Update fixed headers and multi defines 
 * DREAMCAST hardware +opengl SDL FAST BLIT SPEED CUSTOM
 2D blit speed benchmark
-```SDL CHUI
+SDL CHUI
 
 OUTPUT:>                           320x240  320x240    640x480                 640x480
 OUTPUT:>                           software hardware software                   hardware
