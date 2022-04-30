@@ -28,7 +28,6 @@
 #include "SDL_RLEaccel_c.h"
 #include "SDL_pixels_c.h"
 #include "SDL_leaks.h"
-#include "memfuncs.h"
 
 
 /* Public routines */
@@ -124,23 +123,14 @@ SDL_Surface * SDL_CreateRGBSurface (Uint32 flags,
 	if ( ((flags&SDL_HWSURFACE) == SDL_SWSURFACE) || 
 				(video->AllocHWSurface(this, surface) < 0) ) {
 		if ( surface->w && surface->h ) {
-#ifdef __DREAMCAST__
-			surface->pixels = memalign(8, surface->h*surface->pitch);
-#else
 			surface->pixels = SDL_malloc(surface->h*surface->pitch);
-#endif
 			if ( surface->pixels == NULL ) {
 				SDL_FreeSurface(surface);
 				SDL_OutOfMemory();
 				return(NULL);
 			}
 			/* This is important for bitmaps */
-#ifdef __DREAMCAST
-      //printf("SDL_CreateRGBSurface\n");
-      memset_zeroes_32bit(surface->pixels, (surface->h*surface->pitch)/4);
-#else
 			SDL_memset(surface->pixels, 0, surface->h*surface->pitch);
-#endif
 		}
 	}
 
@@ -617,12 +607,7 @@ int SDL_FillRect(SDL_Surface *dst, SDL_Rect *dstrect, Uint32 color)
 		if ( !color && !((uintptr_t)row&3) && !(x&3) && !(dst->pitch&3) ) {
 			int n = x >> 2;
 			for ( y=dstrect->h; y; --y ) {
-#ifdef __DREAMCAST__
-        //printf("SDL_FillRect\n");
-        memset_zeroes_32bit(row, n);
-#else
 				SDL_memset4(row, 0, n);
-#endif
 				row += dst->pitch;
 			}
 		} else {

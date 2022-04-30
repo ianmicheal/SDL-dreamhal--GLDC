@@ -20,14 +20,13 @@
     slouken@libsdl.org
 */
 #include "SDL_config.h"
-
+#include "memfuncs.h"
 #include "SDL_video.h"
 #include "SDL_sysvideo.h"
 #include "SDL_blit.h"
 #include "SDL_RLEaccel_c.h"
 #include "SDL_pixels_c.h"
-//#included "memfuncs.h"
-
+#define  memset_
 #if defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__)) && SDL_ASSEMBLY_ROUTINES
 #define MMX_ASMBLIT
 #if (__GNUC__ > 2)  /* SSE instructions aren't in GCC 2. */
@@ -108,7 +107,35 @@ static int SDL_SoftBlit(SDL_Surface *src, SDL_Rect *srcrect,
 	/* Blit is done! */
 	return(okay ? 0 : -1);
 }
+static __inline__ void * memcpy_ (void *dest, const void *src, size_t len)
+{
+  if(!len)
+  {
+    return dest;
+  }
 
+  const uint8_t *s = (uint8_t *)src;
+  uint8_t *d = (uint8_t *)dest;
+
+  uint32_t diff = (uint32_t)d - (uint32_t)(s + 1); // extra offset because input gets incremented before output is calculated
+  // Underflow would be like adding a negative offset
+
+  // Can use 'd' as a scratch reg now
+  asm volatile (
+    "clrs\n" // Align for parallelism (CO) - SH4a use "stc SR, Rn" instead with a dummy Rn
+  ".align 2\n"
+  "0:\n\t"
+    "dt %[size]\n\t" // (--len) ? 0 -> T : 1 -> T (EX 1)
+    "mov.b @%[in]+, %[scratch]\n\t" // scratch = *(s++) (LS 1/2)
+    "bf.s 0b\n\t" // while(s != nexts) aka while(!T) (BR 1/2)
+    " mov.b %[scratch], @(%[offset], %[in])\n" // *(datatype_of_s*) ((char*)s + diff) = scratch, where src + diff = dest (LS 1)
+    : [in] "+&r" ((uint32_t)s), [scratch] "=&r" ((uint32_t)d), [size] "+&r" (len) // outputs
+    : [offset] "z" (diff) // inputs
+    : "t", "memory" // clobbers
+  );
+
+  return dest;
+}
 #ifdef MMX_ASMBLIT
 static __inline__ void SDL_memcpyMMX(Uint8 *to, const Uint8 *from, int len)
 {
@@ -166,40 +193,6 @@ static void SDL_BlitCopy(SDL_BlitInfo *info)
 	srcskip = w+info->s_skip;
 	dstskip = w+info->d_skip;
 
-#ifdef __DREAMCAST__
-  // Find out which optimised memcpy to call
-  void* (*memcpy_f)(void*, const void*, size_t) = NULL;
-  size_t mlen = w;
-  if (w%32 == 0) {
-    //printf("BLIT memcpy_64bit_32Bytes\n");
-    memcpy_f = memcpy_64bit_32Bytes;
-    mlen = w/32;
-  } else if (w%16 == 0) {
-    //printf("BLIT memcpy_32bit_16Bytes\n");
-    //memcpy_f = memcpy_32bit_16Bytes;
-    //mlen = w/16;
-    memcpy_f = memcpy_16bit;
-    mlen = w/2;
-  } else if (w%8 == 0) {
-    //printf("BLIT memcpy_64bit\n");
-    memcpy_f = memcpy_64bit;
-    mlen = w/8;
-  } else if (w%4 == 0) {
-    //printf("BLIT memcpy_32bit\n");
-    memcpy_f = memcpy_32bit;
-    mlen = w/4;
-  } else if (w%2 == 0) {
-    //printf("BLIT memcpy_16bit\n");
-    memcpy_f = memcpy_16bit;
-    mlen = w/2;
-  } else {
-    //printf("BLIT memcpy\n");
-    memcpy_f = SDL_memcpy;
-    mlen = w;
-  }
-
-#endif
-
 #ifdef SSE_ASMBLIT
 	if(SDL_HasSSE())
 	{
@@ -229,11 +222,7 @@ static void SDL_BlitCopy(SDL_BlitInfo *info)
 	else
 #endif
 	while ( h-- ) {
-#ifdef __DREAMCAST__
-    memcpy_f(dst, src, mlen);
-#else
-		SDL_memcpy(dst, src, w);
-#endif
+		memcpy_(dst, src, w);
 		src += srcskip;
 		dst += dstskip;
 	}
@@ -253,7 +242,7 @@ static void SDL_BlitCopyOverlap(SDL_BlitInfo *info)
 	dstskip = w+info->d_skip;
 	if ( dst < src ) {
 		while ( h-- ) {
-			SDL_memcpy(dst, src, w);
+		 memcpy_(dst, src, w);
 			src += srcskip;
 			dst += dstskip;
 		}

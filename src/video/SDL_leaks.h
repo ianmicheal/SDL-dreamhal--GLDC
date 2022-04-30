@@ -22,7 +22,7 @@
 #include "SDL_config.h"
 
 /* Define this if you want surface leak detection code enabled */
-/*#define CHECK_LEAKS*/
+#define CHECK_LEAKS
 
 /* Global variables used to check leaks in code using SDL */
 

@@ -1847,12 +1847,7 @@ static SDL_bool UnRLEAlpha(SDL_Surface *surface)
         return(SDL_FALSE);
     }
     /* fill background with transparent pixels */
-#ifdef __DREAMCAST__
-    //printf("UnRLEAlpha\n");
-    memset_zeroes_64bit(surface->pixels, (surface->h * surface->pitch)/8);
-#else
     SDL_memset(surface->pixels, 0, surface->h * surface->pitch);
-#endif
 
     dst = surface->pixels;
     srcbuf = (Uint8 *)(df + 1);

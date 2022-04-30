@@ -88,7 +88,6 @@
 #include "SDL_stretch_c.h"
 #include "SDL_yuvfuncs.h"
 #include "SDL_yuv_sw_c.h"
-#include "memfuncs.h"
 
 /* The functions used to manipulate software video overlays */
 static struct private_yuvhwfuncs sw_yuvfuncs = {
@@ -966,13 +965,7 @@ SDL_Overlay *SDL_CreateYUV_SW(_THIS, int width, int height, Uint32 format, SDL_S
 		SDL_OutOfMemory();
 		return(NULL);
 	}
-#ifdef __DREAMCAST__
-  //printf("SDL_CreateYUV_SW\n");
-  memset_zeroes_64bit(overlay, (sizeof *overlay)/8);
-  //printf("SDL_CreateYUV_SW end\n");
-#else
 	SDL_memset(overlay, 0, (sizeof *overlay));
-#endif
 
 	/* Fill in the basic members */
 	overlay->format = format;

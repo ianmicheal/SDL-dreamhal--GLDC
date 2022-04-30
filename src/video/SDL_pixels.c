@@ -29,7 +29,7 @@
 #include "SDL_blit.h"
 #include "SDL_pixels_c.h"
 #include "SDL_RLEaccel_c.h"
-#include "memfuncs.h"
+
 /* Helper functions */
 /*
  * Allocate a pixel format structure and fill it according to the given info.
@@ -46,12 +46,7 @@ SDL_PixelFormat *SDL_AllocFormat(int bpp,
 		SDL_OutOfMemory();
 		return(NULL);
 	}
-#ifdef __DREAMCAST__
-  //printf("SDL_AllocFormat\n");
-  memset_zeroes_64bit(format, sizeof(*format)/8);
-#else
 	SDL_memset(format, 0, sizeof(*format));
-#endif
 	format->alpha = SDL_ALPHA_OPAQUE;
 
 	/* Set up the format */
@@ -499,12 +494,7 @@ static Uint8 *MapNto1(SDL_PixelFormat *src, SDL_PixelFormat *dst, int *identical
 	
 	/* SDL_DitherColors does not initialize the 'unused' component of colors,
 	   but Map1to1 compares it against pal, so we should initialize it. */  
-#ifdef __DREAMCAST__
-  //printf("MapNto1\n");
-  memset_zeroes_32bit(colors, sizeof(colors)/4);
-#else
 	SDL_memset(colors, 0, sizeof(colors));
-#endif
 
 	dithered.ncolors = 256;
 	SDL_DitherColors(colors, 8);
@@ -522,13 +512,7 @@ SDL_BlitMap *SDL_AllocBlitMap(void)
 		SDL_OutOfMemory();
 		return(NULL);
 	}
-#ifdef __DREAMCAST__
-  //printf("SDL_AllocBlitMap\n");
-  memset_16bit(map, 0, sizeof(*map)/2);
-  //printf("SDL_AllocBlitMap end\n");
-#else
 	SDL_memset(map, 0, sizeof(*map));
-#endif
 
 	/* Allocate the software blit data */
 	map->sw_data = (struct private_swaccel *)SDL_malloc(sizeof(*map->sw_data));
@@ -537,13 +521,7 @@ SDL_BlitMap *SDL_AllocBlitMap(void)
 		SDL_OutOfMemory();
 		return(NULL);
 	}
-#ifdef __DREAMCAST__
-  //printf("SDL_AllocBlitMap 2\n");
-  memset_16bit(map->sw_data, 0, sizeof(*map->sw_data)/2);
-  //printf("SDL_AllocBlitMap 2 end\n");
-#else
 	SDL_memset(map->sw_data, 0, sizeof(*map->sw_data));
-#endif
 
 	/* It's ready to go */
 	return(map);
