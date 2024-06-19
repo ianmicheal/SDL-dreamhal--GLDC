@@ -51,7 +51,8 @@ SDL is a cross-platform multimedia library designed to provide low-level access 
   -  ** SDL[DREAMHAL]+[GLDC]KOS2.0 BLENDING GLASS CUBE HARDWARE**:
   - [Demo 2](https://youtu.be/GM4JnKxp1ZQ)
   - ** SDL[DREAMHAL]+[GLDC]KOS2.0 SPINNING TEXTURES CUBE 60FPS
-  - [Demo 3]([https://streamable.com/5k8lsk](https://youtu.be/G0KFthogrPg)
+  - [Demo 3](https://youtu.be/G0KFthogrPg)
+  - **OLD VERSION CANT BE COMPILED OR USED ON KOS2.0**
    - **Old Version**: [SDL by Chui](http://chui.dcemu.co.uk/sdl.html)
 
 ---
