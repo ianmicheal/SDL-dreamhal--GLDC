@@ -13,11 +13,16 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 ![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/benchmark.png)
 
 ## Dreamcast Integration
-- **Arch**: Shutting down kernel.
-- **Maple**: Final stats -- device count = 2, vbl_cntr = 56270, dma_cntr = 56266.
-- **Video Mode**: Set to 640x480 NTSC.
-
-## Simple DirectMedia Layer (SDL)
+- **Correct OpenGL integration.**: 
+- **Textured video driver for virtual resolutions.**: 
+- **Direct framebuffer video driver using store queues.**:
+- **Mouse emulation using analog pad**: 
+- **Mouse emulation using analog pad**: 
+- **Mouse emulation using analog pad**:
+- **Mapped keys as pad buttons.**:
+- **Two texture internal color mode supported: RGB5551 and RGB4444.**:
+- 
+- 
 SDL is a cross-platform multimedia library designed to provide low-level access to audio, keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.
 
 ### New Features
