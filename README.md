@@ -17,8 +17,6 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 - **Textured video driver for virtual resolutions.**: 
 - **Direct framebuffer video driver using store queues.**:
 - **Mouse emulation using analog pad**: 
-- **Mouse emulation using analog pad**: 
-- **Mouse emulation using analog pad**:
 - **Mapped keys as pad buttons.**:
 - **Two texture internal color mode supported: RGB5551 and RGB4444.**:
 - **Fast threaded audio driver.**:
