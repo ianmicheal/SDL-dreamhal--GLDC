@@ -1,5 +1,5 @@
 
-# SDL-DREAMHAL Version 1.0
+# DREAMCAST SDL-DREAMHAL Version 1.0
 **Based on SDL 1.2.13**
 
 
