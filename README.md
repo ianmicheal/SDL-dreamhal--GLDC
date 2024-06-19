@@ -2,7 +2,7 @@
 # SDL-DREAMHAL Version 1.0
 **Based on SDL 1.2.13**
 
-![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/benchmark.png)
+
 
 ## Overview
 SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored for the Dreamcast. It leverages GLDC for rendering, providing significant performance enhancements for 2D blitting and other operations. This version includes updates for fixed headers and multiple defines.
@@ -12,13 +12,7 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 - **2D Blit Speed Benchmark**: Significant improvements in both software and hardware modes.
 - **Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
 
-## Benchmark Results
-| Resolution | Mode      | Slow Points (frames/sec) | Fast Points (frames/sec) | Rect Fill (rects/sec) | 32x32 Blits (blits/sec) |
-|------------|-----------|--------------------------|--------------------------|-----------------------|-------------------------|
-| 320x240    | Software  | 0.20885                  | 18.4372                  | 652.125               | 1327.28                 |
-| 320x240    | Hardware  | 0.208823                 | 18.4544                  | 652.333               | 1327.28                 |
-| 640x480    | Software  | 0.0250253                | 4.47263                  | 156.312               | 1277.21                 |
-| 640x480    | Hardware  | 0.0250252                | 4.47271                  | 156.3                 | 1277.6                  |
+![Screenshot of SDL-DREAMHAL](https://github.com/ianmicheal/SDL-dreamhal--GLDC/blob/main/benchmark.png)
 
 ## Dreamcast Integration
 - **Arch**: Shutting down kernel.
