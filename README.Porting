@@ -8,7 +8,7 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 - **Dreamcast Hardware + OpenGL**: Optimized for SDL FAST BLIT SPEED.
 - **2D Blit Speed Benchmark**: Significant improvements in both software and hardware modes.
 - **Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
-![img](https://imgur.com/KUwt7xZ)
+![img](https://i.imgur.com/cFUDaQE.png)
 
 ## Benchmark Results
 | Resolution | Mode      | Slow Points (frames/sec) | Fast Points (frames/sec) | Rect Fill (rects/sec) | 32x32 Blits (blits/sec) |
