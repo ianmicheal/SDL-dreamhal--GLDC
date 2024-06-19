@@ -21,8 +21,9 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 - **Mouse emulation using analog pad**:
 - **Mapped keys as pad buttons.**:
 - **Two texture internal color mode supported: RGB5551 and RGB4444.**:
-- 
-- 
+- **Fast threaded audio driver.**:
+
+  ## SDL
 SDL is a cross-platform multimedia library designed to provide low-level access to audio, keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.
 
 ### New Features
