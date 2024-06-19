@@ -10,6 +10,8 @@ SDL-DREAMHAL is a customized version of SDL (Simple DirectMedia Layer) tailored 
 - **Integration with GLDC**: Utilizes Kazade's GLDC library for enhanced OpenGL compatibility and performance.
 ![img](https://i.imgur.com/cFUDaQE.png)
 
+![In what order to compile the files](https://media.githubusercontent.com/media/pc-magas/myFirstEnclave/master/doc/SGX%20Compile%20workflow.png)
+
 ## Benchmark Results
 | Resolution | Mode      | Slow Points (frames/sec) | Fast Points (frames/sec) | Rect Fill (rects/sec) | 32x32 Blits (blits/sec) |
 |------------|-----------|--------------------------|--------------------------|-----------------------|-------------------------|
